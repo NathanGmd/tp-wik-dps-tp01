@@ -65,7 +65,7 @@ Le serveur renverra une réponse avec un statut HTTP 200 et le contenu JSON de l
 
 Si vous envoyez une requête vers un endpoint qui n'est pas /ping, vous recevrez une réponse 404 Not Found :
 ```
-curl http://localhost:3000/unknown-endpoint
+curl http://localhost:3000/foo
 ```
 ### Réponse :
 ```
