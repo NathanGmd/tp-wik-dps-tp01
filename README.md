@@ -20,7 +20,7 @@ cd tp-wik-dps-tp01
 ```
 ### Étape 2 : Configurer la variable d'environnement PORT
 
-Le serveur utilise la variable d'environnement PORT pour déterminer le port sur lequel il écoute. Si vous ne définissez pas cette variable, le serveur se coupera.
+Le serveur utilise la variable d'environnement PORT pour déterminer le port sur lequel il écoute. Si vous ne définissez pas cette variable, le serveur ne se lancera pas.
 
 #### - Sur Linux/macOS :
 ```
