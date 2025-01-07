@@ -23,15 +23,15 @@ cd mon-repo
 
 Le serveur utilise la variable d'environnement PORT pour déterminer le port sur lequel il écoute. Si vous ne définissez pas cette variable, le serveur se coupera.
 
-## - Sur Linux/macOS :
+#### - Sur Linux/macOS :
 ```
 export PORT=3000
 ```
-## - Sur Windows (Command Prompt) :
+#### - Sur Windows (Command Prompt) :
 ```
 set PORT=3000
 ```
-## - $env:PORT=3000
+#### - Sur Windows (PowerShell) :
 ```
 $env:PORT=3000
 ```
@@ -43,9 +43,9 @@ cargo run
 ```
 Le serveur démarrera et écoutera sur le port que vous avez configuré.
 
-### Tester le Serveur
+## Tester le Serveur
 
-## Vérification de la réponse
+### Vérification de la réponse
 
 Une fois le serveur en fonctionnement, vous pouvez tester l'endpoint /ping en envoyant une requête GET via curl :
 ```
@@ -53,7 +53,7 @@ curl http://localhost:3000/ping
 ```
 Le serveur renverra une réponse avec un statut HTTP 200 et le contenu JSON de la requête.
 
-## Exemple de réponse réussie :
+#### Exemple de réponse réussie :
 ```
 {
   "GET": "/ping",
@@ -62,20 +62,20 @@ Le serveur renverra une réponse avec un statut HTTP 200 et le contenu JSON de l
   "Accept": "*/*"
 }
 ```
-### Tester une requête incorrecte
+## Tester une requête incorrecte
 
 Si vous envoyez une requête vers un endpoint qui n'est pas /ping, vous recevrez une réponse 404 Not Found :
 ```
 curl http://localhost:3000/unknown-endpoint
 ```
-Réponse :
+### Réponse :
 ```
 HTTP/1.1 404 NOT FOUND
 Content-Length: 0
 ```
 ## Structure du code
 
-    - main() : Le serveur est initialisé et écoute sur le port spécifié dans la variable d'environnement PORT.
-    - handle_connection(stream: TcpStream) : Cette fonction gère les connexions entrantes et génère la réponse en fonction de la requête reçue.
-    - http_request_to_json(request: Vec<String>) : Cette fonction convertit les en-têtes de la requête HTTP en un format JSON pour la réponse.
+- main() : Le serveur est initialisé et écoute sur le port spécifié dans la variable d'environnement PORT.
+- handle_connection(stream: TcpStream) : Cette fonction gère les connexions entrantes et génère la réponse en fonction de la requête reçue.
+- http_request_to_json(request: Vec<String>) : Cette fonction convertit les en-têtes de la requête HTTP en un format JSON pour la réponse.
 
