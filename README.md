@@ -15,9 +15,8 @@ Avant de commencer, assurez-vous que vous avez **Rust** et **Cargo** installés 
 Clonez ce dépôt Git sur votre machine locale :
 
 ```bash
-git clone https://github.com/mon-utilisateur/mon-repo.git
-cd mon-repo
-
+git clone https://github.com/NathanGmd/tp-wik-dps-tp01.git
+cd tp-wik-dps-tp01
 ```
 ### Étape 2 : Configurer la variable d'environnement PORT
 
