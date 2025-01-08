@@ -78,7 +78,7 @@ Content-Length: 0
 - handle_connection(stream: TcpStream) : Cette fonction gère les connexions entrantes et génère la réponse en fonction de la requête reçue.
 - http_request_to_json(request: Vec<String>) : Cette fonction convertit les en-têtes de la requête HTTP en un format JSON pour la réponse.
 
-## Deployement sur docker
+## Deploiement sur docker
 
 ### Creation de l'image avec buildkit
 
@@ -101,7 +101,7 @@ COPY --from=builder /home/root/rapi/app .
 EXPOSE $PORT
 ENTRYPOINT ["./app"]
 ```
-Buildkit de build une image avec les dépendance directement compilées dans le cache, ce qui permet d'avoir une image beaucoup plus légére et un déployement beaucoup plus rapide !
+Buildkit de build une image avec les dépendance directement compilées dans le cache, ce qui permet d'avoir une image beaucoup plus légére et un déploiement beaucoup plus rapide !
 
 ### Build de l'image
 #### Lancer la construction de l'image :
@@ -110,7 +110,7 @@ Buildkit de build une image avec les dépendance directement compilées dans le 
  time DOCKER_BUILDKIT=1 docker build --progress=plain --tag r-api-tp .
 ```
 
-Time nous permet de voir le temps de deployement
+Time nous permet de voir le temps de deploiement
 
 #### Lancement du docker
 
