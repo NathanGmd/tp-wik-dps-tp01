@@ -7,7 +7,7 @@ use std::{
 
 fn main() {
     let env_port: Result<String, env::VarError> = env::var("PORT");
-    let listener: TcpListener = TcpListener::bind(format!("127.0.0.1:{}", env_port.unwrap())).unwrap();
+    let listener: TcpListener = TcpListener::bind(format!("0.0.0.0:{}", env_port.unwrap())).unwrap();
     for stream in listener.incoming() {
         let stream: TcpStream = stream.unwrap();
         
