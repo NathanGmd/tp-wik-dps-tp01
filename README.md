@@ -78,3 +78,44 @@ Content-Length: 0
 - handle_connection(stream: TcpStream) : Cette fonction gère les connexions entrantes et génère la réponse en fonction de la requête reçue.
 - http_request_to_json(request: Vec<String>) : Cette fonction convertit les en-têtes de la requête HTTP en un format JSON pour la réponse.
 
+## Deployement sur docker
+
+### Creation de l'image avec buildkit
+
+```
+FROM rust as builder
+ENV HOME=/home/root
+WORKDIR  $HOME/rapi
+ADD src src
+ADD Cargo.lock .
+ADD Cargo.toml .
+RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/home/root/rapi/target \
+    cargo build --release \
+    && cp target/release/tp-wik-dps-tp01 ./app
+
+FROM debian:latest
+WORKDIR app
+ENV PORT=3002
+COPY --from=builder /home/root/rapi/app .
+EXPOSE $PORT
+ENTRYPOINT ["./app"]
+```
+Buildkit de build une image avec les dépendance directement compilées dans le cache, ce qui permet d'avoir une image beaucoup plus légére et un déployement beaucoup plus rapide !
+
+### Build de l'image
+#### Lancer la construction de l'image :
+
+```
+ time DOCKER_BUILDKIT=1 docker build --progress=plain --tag r-api-tp .
+```
+
+Time nous permet de voir le temps de deployement
+
+#### Lancement du docker
+
+```
+docker run -p 8085:3002 r-api-tp
+```
+
+Les résultats seront les même qu'avec le serveur lancé en local.
